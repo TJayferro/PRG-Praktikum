@@ -3,60 +3,94 @@
 
 using namespace std;
 
-//Funktion erstellt ein zweidimensionales Array und returned den Pointer des Pointers der ersten Zeile
-int** get_stat_array(){
-    int i,j;
-    int** stat_array = new int*[30];
-    for(i=0; i<30; i++){
-        stat_array[i] = new int[30];
-        for(j=0; j<30; j++){
-            stat_array[i][j] = rand() % 10;
-        }
-    }
-    return stat_array;
+
+
+class MyFirstClass{
+    public:
+        MyFirstClass();
+        void getStaticArray();
+        void getDynamicArray();
+        void printStaticArray();
+        void printDynamicArray();
+    private:
+        int staticArray[30][30];
+        int* dynamicArray = new int[30*30]; 
+        bool dynamicArrayEnable;
+        bool staticArrayEnable;
+};
+
+//Constructor
+MyFirstClass::MyFirstClass(){
+    dynamicArrayEnable = false;
+    staticArrayEnable = false;
 }
 
-//Funktion nimmt ein zweidimensionales Array und returned ein eindimensionales Array mit kopierten Werten
-int* get_dyn_array(int** stat_array){
+//Verteilt zufällige Zahlen auf das statische Array
+void MyFirstClass::getStaticArray(){
     int i,j;
-    int index = 0;
-    int* dyn_array = new int[30*30];
     for(i=0; i<30; i++){
         for(j=0; j<30; j++){
-            dyn_array[index] = stat_array[i][j];
-            index++; 
+            staticArray[i][j] = rand() % 10;
         }
     }
-    return dyn_array;
+    staticArrayEnable = true;
 }
 
-//Print eines zweidimensionalen statischen Arrays
-void print_stat_array(int** stat_array){
-    for(int i=0; i<30; i++){
-        for(int j=0; j<30; j++){
-            cout << stat_array[i][j] << " ";
+//Kopiert wenn möglich alle Werte des statischen in ein dynamisches Array
+void MyFirstClass::getDynamicArray(){
+    if(staticArrayEnable){
+        int i,j;
+        int index = 0;
+        for(i=0; i<30; i++){
+            for(j=0; j<30; j++){
+                dynamicArray[index] = staticArray[i][j];
+                index++; 
+            }
+        }
+        dynamicArrayEnable = true;
+    }
+    else{
+        cout << "Noch kein statisches Array erstellt\n";
+    }
+}
+
+//Printausgabe des statischen Arrays
+void MyFirstClass::printStaticArray(){
+    if(staticArrayEnable){
+        for(int i=0; i<30; i++){
+            for(int j=0; j<30; j++){
+                cout << staticArray[i][j] << " ";
+            }
+            cout << "\n";
         }
         cout << "\n";
     }
-    cout << "\n";
+    else{
+        cout << "Noch kein statisches Array erstellt\n";
+    }
 }
 
-//Print eines eindimensionalen dynamischen Arrays
-void print_dyn_array(int* dyn_array){
-    for(int i=0; i<30*30; i++){
-        cout << dyn_array[i] << " ";
+//Printausgabe des dynamischen Arrays
+void MyFirstClass::printDynamicArray(){
+    if(dynamicArrayEnable){
+        for(int i=0; i<30*30; i++){
+            cout << dynamicArray[i] << " ";
+        }
+        cout << "\n";
     }
-    cout << "\n";
+    else{
+        cout << "Noch kein dynamisches Array erstell\n";
+    }
 }
+
+
 
 //Mainfunktioen
 int main() 
 {
-    int **stat_array;   //deklarieren des statischen 2d Arrays
-    int *dyn_array;     //deklarieren des dynamsichen 1d Arrays
+    
     string user_input;      //deklarieren des User inputs
-    bool stat_array_enable = false;     //definieren der Bool Variable ob ein statisches Array definiert wird
-    bool dyn_array_enable = false;      //definieren der Bool Variable ob ein dynamisches Array definiert wird
+    MyFirstClass test;      //Initialisierung des Klassenelements
 
     cout << "Type 'help' for more information\n";    //Erste Nachricht
     //Beginn des Konsolenprogramms durch Endlosschleife
@@ -75,34 +109,22 @@ int main()
 
         else if(user_input == "star"){
             cout << "Statisches Array wurde erstellt\n";
-            stat_array = get_stat_array();
-            stat_array_enable = true;
+            test.getStaticArray();
         }
 
-        else if(user_input == "dyar" and stat_array_enable){
+        else if(user_input == "dyar"){
             cout << "Dynamisches Array wurde erstellt und statisches Array kopiert\n";
-            dyn_array = get_dyn_array(stat_array);
-            dyn_array_enable = true;
+            test.getDynamicArray();
         }
 
-        //Falls es noch kein statisches Array zum kopieren gibt, wird das abgefangen
-        else if(user_input == "dyar" and !stat_array_enable){
-            cout << "Noch kein statisches Array erstellt\n";
+
+        else if(user_input == "printsa"){
+            test.printStaticArray();
         }
 
-        else if(user_input == "printsa" and stat_array_enable){
-            print_stat_array(stat_array);
-        }
-
-        else if(user_input == "printsa" and !stat_array_enable){
-            cout << "Noch kein statisches Array erstellt\n";
-        }
-
-        else if(user_input == "printda" and dyn_array_enable){
-            print_dyn_array(dyn_array);
-        }
-        else if(user_input == "printda" and !dyn_array_enable){
-            cout << "Noch kein dynamisches Array erstellt\n";
+        
+        else if(user_input == "printda"){
+            test.printDynamicArray();
         }
 
         //Beenden des Programms
