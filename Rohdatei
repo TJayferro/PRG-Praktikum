@@ -1,0 +1,52 @@
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+int main(){
+
+    char newField;
+    int currentField;
+    int i;
+    int j;
+                            //Randbedingungen
+    if i == 0 {             //ganz oben
+        if j == 0 {         //und ganz links
+
+        } else if {
+            j == 30         //und ganz rechts
+
+        }
+    } else if i == 30 {     //ganz unten
+        if j == 0 {         //und ganz links
+
+        } else if {
+            j == 30         //und ganz rechts
+        }
+    } else if j == 0 {      //ganz links
+
+    } else if j == 30 {     //ganz rechts
+
+    }
+    for (int currentField = 0; currentField == sizeof(newField); currentField++);  //currentField ist das grad angeschaute Feld
+    void checkField()::newField (currentField[i-1][j-1] && currentField[i-1][j] && currentField[i-1][j+1] && currentField[i][j-1] && currentField[i][j+1] && currentField[i+1][j-1] && \
+            currentField[i+1][j] && currentField[i+1][j+1]) {  //die Felder, die um das momentane Feld sind
+        if currentField == "*" {alive++
+        } else {
+          alive += 0
+        }
+    }
+
+
+    if currentField == "*" {
+        if alive == 2 || alive == 3 {currentField[i][j] = "*"     //bleibt am Leben
+        }
+        else {
+            currentField[i][j] = 0       //stirbt
+        }
+    }
+    else {
+        if alive == 3 {
+            currentField[i][j] = "*"     //wird wiederbelebt
+        }
+    }
