@@ -6,7 +6,7 @@
 
 using namespace std;
 
-
+//Klasse des Game of Life
 class GameOfLife{
     public:
         GameOfLife(int hoehe, int breite);   //Constructor
