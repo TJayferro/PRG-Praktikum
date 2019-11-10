@@ -184,9 +184,10 @@ void GameOfLife::importField(string fileName){
 
 //Exportiert aktuelles Spielfeld in .txt Datei
 void GameOfLife::exportField(string fileName){
+    fileName = fileName + ".txt";
     ofstream myFile(fileName);
     if (myFile.is_open()){
-
+        
         //Schreiben der Feldgröße
         myFile << height << "\n";
         myFile << width << "\n";
@@ -201,6 +202,7 @@ void GameOfLife::exportField(string fileName){
         }
         myFile << outputField;
         myFile.close();
+        cout << "Exportieren erfolgreich";
     }
     else cout << "Unable to find file\n";
 }
