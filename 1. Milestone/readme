@@ -1,9 +1,8 @@
-Aufgabe 1
-a)
-
-b) Befehle für das Konsolenprogramm:
-	-> 'help' -> gibt alle Befehle aus
-	-> 'star' -> generiert ein statisches zweidimensionales 30x30 Array mit zufälligen Zahlen
-	-> 'dyar' -> falls ein 30x30 Array existiert, kopiert die Werte in ein dynamisches eindimensionales 30*30 Array
-	-> 'printsa' -> falls erstellt, print Ausgabe des statischen zweidimensionalen 30x30 Arrays
-	-> 'printda' -> falls erstellt, print Ausgabe des dynamischen eindimensionalen 30*30 Arrays
+Teammitglieder: Matrikelnummer - Name - Ungefährer Zeitaufwand
+6895536 - Xuan Anh Nguyen - 30h
+	-> Aufgabe 1: 
+		-> a)
+		-> b)
+		-> c)
+		-> d)
+		-> e)

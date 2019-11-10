@@ -89,46 +89,48 @@ void MyFirstClass::printDynamicArray(){
 int main() 
 {
     
-    string user_input;      //deklarieren des User inputs
+    string userInput;      //deklarieren des User inputs
     MyFirstClass test;      //Initialisierung des Klassenelements
 
     cout << "Type 'help' for more information\n";    //Erste Nachricht
     //Beginn des Konsolenprogramms durch Endlosschleife
     while(true){
-        cout << ">>> ";     //Zeilenanfang des Konsolenprogramms zur Kenntlichkeit 
-        cin >> user_input;  //Abfrage des Inputs
+        userInput.clear();
+        cout << ">>> ";     //Prompt des Konsolenprogramms zur Kenntlichkeit
+        cin >> userInput;  //Abfrage des Inputs
 
         //Fälle, jenachdem was der User eingibt, wird das Programm ihm etwas ausspucken
         //Help Funktion
-        if(user_input == "help"){  
-            cout << "'star' := erstellt statisches Array\n";
-            cout << "'dyar' := kopiert statisches in ein dynamisches Array\n";
-            cout << "'printsa' := print statisches Array\n";
-            cout << "'printda' := print dynamisches Array\n";
+        if(userInput == "help"){  
+            cout << "'star' := Erstellt ein statisches Array\n";
+            cout << "'dyar' := Kopiert das statische in ein dynamisches Array\n";
+            cout << "'printsa' := Printausgabe des statischen Array\n";
+            cout << "'printda' := Printausgabe des dynamischen Array\n";
+            cout << "'exit' := Beendet das Programm";
         }
 
-        else if(user_input == "star"){
+        else if(userInput == "star"){
             cout << "Statisches Array wurde erstellt\n";
             test.getStaticArray();
         }
 
-        else if(user_input == "dyar"){
+        else if(userInput == "dyar"){
             cout << "Dynamisches Array wurde erstellt und statisches Array kopiert\n";
             test.getDynamicArray();
         }
 
 
-        else if(user_input == "printsa"){
+        else if(userInput == "printsa"){
             test.printStaticArray();
         }
 
         
-        else if(user_input == "printda"){
+        else if(userInput == "printda"){
             test.printDynamicArray();
         }
 
         //Beenden des Programms
-        else if(user_input == "exit"){
+        else if(userInput == "exit"){
             cout << "Exiting program\n";
             break; 
         }
